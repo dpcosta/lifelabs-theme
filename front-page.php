@@ -39,8 +39,7 @@ get_header(); ?>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Sobre a Life Labs</h2>
-                <p>A Life Labs é uma empresa criada com o intuito de modelar e replicar as melhores experiências de desenvolvimento humano. Acreditamos que podemos mudar o foco de nossas vidas e ressignificar crenças e conceitos, nos fortalecendo e aumentando nossos níveis de bem estar e felicidade.</p>
-                <p>Fazemos ações e treinamentos de impactos extremamente positivos em sua vida, que o levará para outro nível e o fará criar a melhor versão de si mesmo.</p>
+                <p><?php echo( get_option( 'quem-somos-name' )); ?></p>
                 <p class="call-to-action">Conheça o que alguns de nossos clientes têm a dizer sobre nós.</p>
                 <a href="#depoimentos" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
@@ -69,7 +68,7 @@ get_header(); ?>
         <div class="row">
             <?php 
             $args = array( 
-                'post_type' => 'depoimento', /* apenas depoimentos - testar cadastrando posts...  */
+                'post_type' => 'depoimento', /* apenas depoimentos - testar cadastrando posts... (ok)  */
                 'posts_per_page' => 3 /* apenas 3 depoimentos - testar cadastrando mais um... (ok) */
             );
             $loop = new WP_Query( $args );

@@ -97,10 +97,57 @@ function lifelabs_setup() {
 
     register_post_type( 'depoimento', $args);  
 
-
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );
+
+//Adicionando suporte para campo Quem Somos nas configurações gerais do blog
+add_action( 'admin_init', 'quem_somos_init' );
+function quem_somos_init() {
+
+    /* Create settings section */
+    add_settings_section(
+        'quem-somos-id',                   // Section ID
+        'Quem Somos - Seção',  // Section title
+        'quem_somos_section_description', // Section callback function
+        'general'                          // Settings page slug
+    );
+ 
+    /* Create settings field */
+    add_settings_field(
+        'quem-somos-field-id',       // Field ID
+        'Quem Somos',       // Field title 
+        'quem_somos_field_callback', // Field callback function
+        'general',                    // Settings page slug
+        'quem-somos-id'               // Section ID
+    );
+
+    /* Register Settings */
+    register_setting(
+        'general',             // Options group
+        'quem-somos-name'      // Option name/database
+    );
+}
+
+/* Sanitize Callback Function */
+function quem_somos_sanitize( $input ){
+    return $input;
+}
+ 
+/* Setting Section Description */
+function quem_somos_section_description(){
+    echo wpautop( "Texto institucional sobre a Life Labs." );
+}
+ 
+/* Settings Field Callback */
+function quem_somos_field_callback(){
+    ?>
+    <label for="quem-somos-input">
+        <textarea id="quem-somos-input" name="quem-somos-name" cols="120" rows="6"><?php echo(get_option( 'quem-somos-name' )); ?></textarea> 
+    </label>
+    <?php
+} 
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
