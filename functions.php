@@ -67,6 +67,37 @@ function lifelabs_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+
+	//Adicionar novo tipo de conteúdo Depoimentos
+	$nomeSingular = 'Depoimento';
+    $nomePlural = 'Depoimentos';
+    $description = 'Depoimentos de Life Labs';
+
+    $labels = array(
+        'name' => $nomePlural,
+        'name_singular' => $nomeSingular,
+        'add_new_item' => 'Adicionar novo ' . $nomeSingular,
+        'edit_item' => 'Editar ' . $nomeSingular
+    );
+
+    $supports = array(
+        'title',
+        'editor',
+        'thumbnail'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'description' => $descricao,
+        'public' => true,
+        'menu_icon' => 'dashicons-thumbs-up',
+        'supports' => $supports
+    );
+
+    register_post_type( 'depoimento', $args);  
+
+
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );

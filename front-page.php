@@ -67,22 +67,25 @@ get_header(); ?>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 item-depoimento">
-                <img src="<?php echo( get_template_directory_uri() ); ?>/img/jordana.png">
-                <h4>Jordana</h4>
-                <p>"...sou muito grata pela oportunidade de ter passado por profissionais tão dedicados (...), pois 
-conseguiram externar a minha auto-confiança e auto-estima."</p>
-            </div>
-            <div class="col-lg-4 item-depoimento">
-                <img src="<?php echo( get_template_directory_uri() ); ?>/img/wanderley.png">
-                <h4>Wander Rocha</h4>
-                <p>"As técnicas e dicas me fizeram acreditar mais no meu potencial, arriscasse mais e seguisse em frente. Hoje posso dizer q a fotografia é uma realidade em minha vida."</p>
-            </div>
-            <div class="col-lg-4 item-depoimento">
-                <img src="<?php echo( get_template_directory_uri() ); ?>/img/jonathan.png">
-                <h4>Jonathan</h4>
-                <p>"Através do coaching eu soube o que eu precisava (...) pra tocar meus sonhos e desejos. (...) me fez acreditar que eu sou capaz e alertar isso dentro de mim."</p>
-            </div>
+            <?php 
+            $args = array( 
+                'post_type' => 'depoimento', /* apenas depoimentos - testar cadastrando posts...  */
+                'posts_per_page' => 3 /* apenas 3 depoimentos - testar cadastrando mais um... (ok) */
+            );
+            $loop = new WP_Query( $args );
+            if( $loop->have_posts() ) { 
+                while( $loop->have_posts() ) {
+                    $loop->the_post();
+                ?>
+                    <div class="col-lg-4 item-depoimento">
+                        <img src="<?php the_post_thumbnail_url(); ?>">
+                        <h4><?php the_title(); ?></h4>
+                        <p><?php the_content(); ?></p>                    
+                    </div>
+                    <!--.item-depoimento-->
+                <?php 
+                }
+            } ?>
         </div>
     </section>
 
