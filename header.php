@@ -51,33 +51,19 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <!--<i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap-->
                     <img id="logo" src="<?php echo( get_template_directory_uri() ); ?>/img/logo-menu.png">
                 </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#quem-somos">Quem Somos</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#depoimentos">Depoimentos</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#dia-de-coach">Dia de Coach</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contato">Contato</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            <?php
+                $menu_args = array( 
+                    'menu' => 'primary-menu', 
+                    'menu_id' => 'primary-menu',
+                    'menu_class' => 'nav navbar-nav',
+                    'container_class' => 'collapse navbar-collapse navbar-right navbar-main-collapse'
+                );
+                wp_nav_menu( $menu_args ); 
+            ?>
         </div>
         <!-- /.container -->
     </nav>
