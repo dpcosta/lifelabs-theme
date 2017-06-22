@@ -391,7 +391,7 @@ a.menu-item-collapse {
 
 /* 6. Dia de Coach */
 
-#tirinha {
+#carouselDiaDeCoach img {
   width: 80%;
   margin: 5px auto;
 }
@@ -402,12 +402,16 @@ a.menu-item-collapse {
 }
 
 @media (max-width: 767px) {
-  #tirinha {
+  #carouselDiaDeCoach img {
     width: 100%;
   }
   #dia-de-coach input {
     width: 90%;
   }  
+}
+
+.carousel-control {
+  opacity: 0.1;
 }
 
 /* 7. Contato */

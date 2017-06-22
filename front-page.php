@@ -21,7 +21,7 @@ get_header(); ?>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="brand-heading">
-                            <h1 class="sr-only">Life Labs</h1>
+                            <h1 class="sr-only"><?php bloginfo('name');?></h1>
                             <img class="img-responsive" src="<?php echo( get_template_directory_uri() ); ?>/img/logo-home.png">
                         </div>
                         <p class="intro-text">Nós acreditamos no poder do <span class="brand-first">#autoconhecimento</span>.<br/>E você? Venha construir a melhor versão de si mesmo!</p>
@@ -103,8 +103,58 @@ get_header(); ?>
         <div class="row">
             <h2>Dia de Coach</h2>
             <p>Tirinhas bem humoradas sobre o cotidiano dos coaches.</p>
-            <img id="tirinha" src="<?php echo( get_template_directory_uri() ); ?>/img/dia-de-coach-tirinha1.jpg" class="img-responsive" />
+            
+        </div>
 
+        <div class="row">
+
+            <!--
+                myCarousel -> carouselDiaDeCoach
+            -->
+
+            <div id="carouselDiaDeCoach" class="carousel slide" data-ride="carousel">
+                <!-- Indicators
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselDiaDeCoach" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselDiaDeCoach" data-slide-to="1"></li>
+                    <li data-target="#carouselDiaDeCoach" data-slide-to="2"></li>
+                </ol>
+                 -->
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <?php 
+                    $args = array( 
+                        'post_type' => 'tirinha', 
+                        'posts_per_page' => 3 
+                    );
+                    $loop = new WP_Query( $args );
+                    if( $loop->have_posts() ) { 
+                        while( $loop->have_posts() ) {
+                            $loop->the_post();
+                        ?>
+                            <div class="item">
+                                <img src="<?php the_post_thumbnail_url(); ?>">
+                            </div>
+                            <!--.item .active-->
+                        <?php 
+                        }
+                    } ?>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#carouselDiaDeCoach" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="right carousel-control" href="#carouselDiaDeCoach" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Próximo</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
             <p class="call-to-action">Inscreva-se para receber novas tirinhas</p>
             <form id="registration-form" action="https://lifelabs.us14.list-manage.com/subscribe/post">
                 <input name="u" value="06c340b04f5216f8d941d86d3" type="hidden">
@@ -112,7 +162,6 @@ get_header(); ?>
                 <input type="email" class="form-control input-lg" name="MERGE0" required  placeholder="Seu melhor email"/>
                 <input type="submit" name="ok" value="Inscrever" class="btn btn-default btn-lg">
             </form>
-
         </div>   
     </section>
 

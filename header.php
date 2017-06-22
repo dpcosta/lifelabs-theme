@@ -19,7 +19,7 @@
 <meta name="description" content="Site Life Labs">
 <meta name="author" content="Life Labs">
 
-<title>Life Labs - Sua Melhor Versão</title>
+<title><?php bloginfo('name');?> - <?php bloginfo('description');?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <!-- Bootstrap Core CSS -->

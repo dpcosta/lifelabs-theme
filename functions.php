@@ -97,6 +97,34 @@ function lifelabs_setup() {
 
     register_post_type( 'depoimento', $args);  
 
+
+	//Adicionar novo tipo de conteúdo Dia de Coach
+	$nomeSingular = 'Tirinha - Dia de Coach';
+    $nomePlural = 'Tirinhas';
+    $description = 'Coleção com as tirinhas do Dia de Coach';
+
+    $labels = array(
+        'name' => $nomePlural,
+        'name_singular' => $nomeSingular,
+        'add_new_item' => 'Adicionar nova ' . $nomeSingular,
+        'edit_item' => 'Editar ' . $nomeSingular
+    );
+
+    $supports = array(
+        'title',
+        'thumbnail'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'description' => $descricao,
+        'public' => true,
+        'menu_icon' => 'dashicons-id-alt',
+        'supports' => $supports
+    );
+
+    register_post_type( 'tirinha', $args);  
+
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );
@@ -141,6 +169,11 @@ function quem_somos_section_description(){
  
 /* Settings Field Callback */
 function quem_somos_field_callback(){
+	/*$content = get_option( 'quem-somos-name' );
+	$settings = array(
+		"textarea_name" => "quem-somos-name"
+	);
+    wp_editor( $content, 'quem-somos-input', $settings );*/
     ?>
     <label for="quem-somos-input">
         <textarea id="quem-somos-input" name="quem-somos-name" cols="120" rows="6"><?php echo(get_option( 'quem-somos-name' )); ?></textarea> 

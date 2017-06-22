@@ -31,6 +31,7 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+    $('#carouselDiaDeCoach .item').first().addClass("active");
 });
 
 // Closes the Responsive Menu on Menu Item Click
