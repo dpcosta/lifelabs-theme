@@ -501,3 +501,9 @@ footer ul {
     transform: scale(1);
   }
 }
+
+/* 10. Newsletters */
+.newsletter img {
+  margin: auto;
+  height: 95vh;
+}

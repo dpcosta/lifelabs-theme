@@ -158,8 +158,8 @@ get_header(); ?>
             <p class="call-to-action">Inscreva-se para receber novas tirinhas</p>
             <form id="registration-form" action="https://lifelabs.us14.list-manage.com/subscribe/post">
                 <input name="u" value="06c340b04f5216f8d941d86d3" type="hidden">
-                <input name="id" value="57781f8f09" type="hidden">
-                <input type="email" class="form-control input-lg" name="MERGE0" required  placeholder="Seu melhor email"/>
+                <input name="id" value="4bcacf8849" type="hidden">
+                <input type="email" class="form-control input-lg" name="EMAIL" required  placeholder="Seu melhor email"/>
                 <input type="submit" name="ok" value="Inscrever" class="btn btn-default btn-lg">
             </form>
         </div>   
