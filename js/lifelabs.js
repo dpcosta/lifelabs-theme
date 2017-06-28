@@ -51,3 +51,30 @@ $('.navbar-toggle').click(function(){
     }
     
 });
+
+
+$('#message-form > button').click(function(){
+
+    //console.log('Chegou aqui');
+
+    var data = {
+        action: 'mail_before_submit',
+        toemail: $('#email-contato').val(), 
+        mensagem: $('#mensagem-contato').val(),
+        _ajax_nonce: $('#my_email_ajax_nonce').data('nonce'),
+    };
+
+    //console.log(data);
+
+    $.post(
+        window.location.href + "/wp-admin/admin-ajax.php", 
+        data, 
+        function(response) {
+            console.log('Got this from the server: ' + response);
+            if (response == 'email enviado') {
+                alert('Email enviado com sucesso!');
+            }
+        }
+    );
+
+});

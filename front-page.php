@@ -188,27 +188,28 @@ get_header(); ?>
                 <p>Curta e compartilhe nossa <a href="http://fb.com/lifelabsbrasil">página no facebook</a>!</p>
             </div>
             <div class="col-lg-6">
-                <form id="message-form" action="mailto:contato@lifelabs.com.br">
+                <form id="message-form" method="post">
                     <div class="input-group">
                         <label class="sr-only" for="nome-contato">Nome</label>
                         <div class="input-group-addon"><span class="fa fa-user"></span></div>
-                        <input id="nome-contato" class="form-control input-lg" name="name" required  placeholder="Nome"/>    
+                        <input id="nome-contato" class="form-control input-lg" name="toname" required  placeholder="Nome"/>    
                     </div>
                     
                     <div class="input-group">
                         <label class="sr-only" for="email-contato">Email</label>
                         <div class="input-group-addon"><span class="fa fa-envelope"></span></div>
-                        <input type="email" id="email-contato" class="form-control input-lg" name="mail" required  placeholder="Email"/>    
+                        <input type="email" id="email-contato" class="form-control input-lg" name="toemail" required  placeholder="Email"/>    
                     </div>
 
-                    <textarea class="form-control" rows="4" required></textarea>
+                    <textarea class="form-control" rows="4" required name="mensagem" id="mensagem-contato"></textarea>
                     
-                    <input type="submit" name="ok" value="Enviar Mensagem" class="btn btn-default btn-lg">
+                    <button class="btn btn-default btn-lg">Enviar Mensagem</button>
                     
                 </form>
             </div>
         </div>
     </section>
 
+<span id="my_email_ajax_nonce" data-nonce="<?php echo wp_create_nonce( 'my_email_ajax_nonce' ); ?>"></span>
 <?php
 get_footer();

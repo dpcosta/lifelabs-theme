@@ -68,6 +68,9 @@ function lifelabs_setup() {
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
+    //alterando o email do remetente
+    add_filter( 'wp_mail_from', 'lifelabs_mail_from' );
+    add_filter( 'wp_mail_from_name', 'lifelabs_mail_from_name' );
 
 	//Adicionar novo tipo de conteúdo Depoimentos
 	$nomeSingular = 'Depoimento';
@@ -89,7 +92,7 @@ function lifelabs_setup() {
 
     $args = array(
         'labels' => $labels,
-        'description' => $descricao,
+        'description' => $description,
         'public' => true,
         'menu_icon' => 'dashicons-thumbs-up',
         'supports' => $supports
@@ -117,7 +120,7 @@ function lifelabs_setup() {
 
     $args = array(
         'labels' => $labels,
-        'description' => $descricao,
+        'description' => $description,
         'public' => true,
         'menu_icon' => 'dashicons-id-alt',
         'supports' => $supports
@@ -128,6 +131,14 @@ function lifelabs_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );
+
+function lifelabs_mail_from() {
+    return 'contato@lifelabs.com.br';
+}
+
+function lifelabs_mail_from_name() {
+    return 'Life Labs';
+}
 
 //Adicionando suporte para campo Quem Somos nas configurações gerais do blog
 add_action( 'admin_init', 'quem_somos_init' );
@@ -252,3 +263,28 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+ * Implementando envio de email através de Ajax
+ */
+add_action('wp_ajax_mail_before_submit', 'lifelabs_send_mail_before_submit');
+
+add_action('wp_ajax_nopriv_mail_before_submit', 'lifelabs_send_mail_before_submit');
+
+function lifelabs_send_mail_before_submit(){
+    check_ajax_referer('my_email_ajax_nonce');
+    if ( isset($_POST['action']) && $_POST['action'] == "mail_before_submit" ){
+
+        wp_mail($_POST['toemail'], 'Life Labs - email enviado pelo site', $_POST['mensagem']);
+        //error_log("Chegou depois do wp_mail...");
+
+        echo 'email enviado';
+        //error_log("Depois do echo email enviado");
+
+        die();
+    }
+    echo 'erro!';
+    die();
+}
+
