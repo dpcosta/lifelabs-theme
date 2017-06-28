@@ -23,7 +23,7 @@
 
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <!-- Bootstrap Core CSS -->
-<link href="<?php echo( get_template_directory_uri() ); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo( get_template_directory_uri() ); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 <!-- Custom Fonts -->
 <link href="<?php echo( get_template_directory_uri() ); ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -31,11 +31,12 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="<?php echo( get_template_directory_uri() ); ?>/style.css" rel="stylesheet">
+<link href="<?php echo( get_template_directory_uri() ); ?>/style.css" rel="stylesheet" type="text/css">
 
 
 <?php 
 /**
+    por enquanto estou mantendo comentado; lembrar de descomentar quando aplicar algum plugin
 	wp_head(); 
 */
 ?>

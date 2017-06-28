@@ -235,6 +235,7 @@ a.menu-item-collapse {
   .navbar-brand > img#logo {
     margin-top: -5px;
     width: 80%;
+    display: none;
   }
 }
 @media (max-width: 767px) {
@@ -258,6 +259,7 @@ a.menu-item-collapse {
   .navbar-brand > img#logo{
     margin-top: -5px;
     width: 50%;
+    display: none;
   }
 }
 
