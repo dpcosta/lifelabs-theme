@@ -412,9 +412,30 @@ a.menu-item-collapse {
   }  
 }
 
-.carousel-control {
-  opacity: 0.1;
+.carousel-indicators {
+  bottom: 5px;
 }
+
+.carousel-indicators .active {
+  background-color: #ffcc29;
+  border: 1px solid #ffcc29;
+}
+
+.carousel-indicators li {
+  background-color: #606062;
+  border: 1px solid #606062;
+}
+
+/*
+.carousel-control {
+  opacity: 0;
+
+}
+
+.carousel-control:hover {
+  opacity: .3;
+}
+*/
 
 /* 7. Contato */
 form>label {

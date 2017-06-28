@@ -112,14 +112,30 @@ get_header(); ?>
                 myCarousel -> carouselDiaDeCoach
             -->
 
-            <div id="carouselDiaDeCoach" class="carousel slide" data-ride="carousel">
-                <!-- Indicators
+            <div id="carouselDiaDeCoach" class="carousel slide" data-ride="carousel" data-interval="false">
+                <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselDiaDeCoach" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselDiaDeCoach" data-slide-to="1"></li>
-                    <li data-target="#carouselDiaDeCoach" data-slide-to="2"></li>
+                    <?php 
+                    $args = array( 
+                        'post_type' => 'tirinha', 
+                        'posts_per_page' => 3 
+                    );
+                    $loop = new WP_Query( $args );
+                    $indicador = 0;
+                    if( $loop->have_posts() ) { 
+                        while( $loop->have_posts() ) {
+                            $loop->the_post();
+                        ?>
+                            <li 
+                                data-target="#carouselDiaDeCoach" 
+                                data-slide-to="<?php echo $indicador; ?>"
+                                <?php if ($indicador==0) echo 'class="active"'; ?>
+                            ></li>
+                        <?php
+                          $indicador = $indicador + 1; 
+                        }
+                    } ?>
                 </ol>
-                 -->
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">

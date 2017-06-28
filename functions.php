@@ -68,10 +68,6 @@ function lifelabs_setup() {
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-    //alterando o email do remetente
-    add_filter( 'wp_mail_from', 'lifelabs_mail_from' );
-    add_filter( 'wp_mail_from_name', 'lifelabs_mail_from_name' );
-
 	//Adicionar novo tipo de conteúdo Depoimentos
 	$nomeSingular = 'Depoimento';
     $nomePlural = 'Depoimentos';
@@ -131,14 +127,6 @@ function lifelabs_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );
-
-function lifelabs_mail_from() {
-    return 'contato@lifelabs.com.br';
-}
-
-function lifelabs_mail_from_name() {
-    return 'Life Labs';
-}
 
 //Adicionando suporte para campo Quem Somos nas configurações gerais do blog
 add_action( 'admin_init', 'quem_somos_init' );
@@ -276,8 +264,16 @@ function lifelabs_send_mail_before_submit(){
     check_ajax_referer('my_email_ajax_nonce');
     if ( isset($_POST['action']) && $_POST['action'] == "mail_before_submit" ){
 
-        wp_mail($_POST['toemail'], 'Life Labs - email enviado pelo site', $_POST['mensagem']);
-        //error_log("Chegou depois do wp_mail...");
+        /*
+        wp_mail( string|array $to, string $subject, string $message, string|array $headers = '', string|array $attachments = array() )
+        */
+
+        $mensagem = "De: ".$_POST['toname']."\r\n"."Email: ".$_POST['toemail']."\r\n"."Mensagem: ".$_POST['mensagem'];
+        wp_mail(
+            'contato@lifelabs.com.br',
+            'Life Labs Contato - De: '.$_POST['toname'], 
+            $mensagem
+        );
 
         echo 'email enviado';
         //error_log("Depois do echo email enviado");

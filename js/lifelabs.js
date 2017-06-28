@@ -59,6 +59,7 @@ $('#message-form > button').click(function(){
 
     var data = {
         action: 'mail_before_submit',
+        toname: $('#nome-contato').val(),
         toemail: $('#email-contato').val(), 
         mensagem: $('#mensagem-contato').val(),
         _ajax_nonce: $('#my_email_ajax_nonce').data('nonce'),
