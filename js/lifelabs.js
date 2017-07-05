@@ -7,53 +7,53 @@
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
 
-    if ($(".navbar").offset().top > 300) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
-        $(".navbar-custom a").addClass("menu-item-collapse");
-        $(".navbar-brand>img").show();
+    if (jQuery(".navbar").offset().top > 300) {
+        jQuery(".navbar-fixed-top").addClass("top-nav-collapse");
+        jQuery(".navbar-custom a").addClass("menu-item-collapse");
+        jQuery(".navbar-brand>img").show();
     } else {
-        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-        $(".navbar-custom a").removeClass("menu-item-collapse");
-        $(".navbar-brand>img").hide();
+        jQuery(".navbar-fixed-top").removeClass("top-nav-collapse");
+        jQuery(".navbar-custom a").removeClass("menu-item-collapse");
+        jQuery(".navbar-brand>img").hide();
     }
 }
 
-$(window).scroll(collapseNavbar);
-$(document).ready(collapseNavbar);
+jQuery(window).scroll(collapseNavbar);
+jQuery(document).ready(collapseNavbar);
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-$(function() {
-    $('.navbar-nav a').addClass('page-scroll');
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+jQuery(function() {
+    jQuery('.navbar-nav a').addClass('page-scroll');
+    jQuery('a.page-scroll').bind('click', function(event) {
+        var $anchor = jQuery(this);
+        jQuery('html, body').stop().animate({
+            scrollTop: jQuery($anchor.attr('href')).offset().top
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
-    $('#carouselDiaDeCoach .item').first().addClass("active");
+    jQuery('#carouselDiaDeCoach .item').first().addClass("active");
 });
 
 // Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $(".navbar-collapse").collapse('hide');
-    $('nav').removeClass("navbar-collapse-in");
+jQuery('.navbar-collapse ul li a').click(function() {
+    jQuery(".navbar-collapse").collapse('hide');
+    jQuery('nav').removeClass("navbar-collapse-in");
 });
 
-$('.navbar-toggle').click(function(){
-    var nav = $('nav');
+jQuery('.navbar-toggle').click(function(){
+    var nav = jQuery('nav');
     if (nav.hasClass('navbar-collapse-in'))  {
         nav.removeClass("navbar-collapse-in");
-        $('#logo').hide();
+        jQuery('#logo').hide();
     } else {
         nav.addClass("navbar-collapse-in");
-        $('#logo').show();
+        jQuery('#logo').show();
     }
     
 });
 
 
-$('#message-form > button').click(function(){
+jQuery('#message-form > button').click(function(){
 
     //console.log('Chegou aqui');
 

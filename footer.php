@@ -28,17 +28,7 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="<?php echo( get_template_directory_uri() ); ?>/vendor/jquery/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo( get_template_directory_uri() ); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="<?php echo( get_template_directory_uri() ); ?>/js/lifelabs.js"></script>
+    <?php wp_footer(); ?>
 
 </body>
 
