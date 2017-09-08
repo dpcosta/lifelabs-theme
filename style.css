@@ -245,7 +245,7 @@ a.menu-item-collapse {
   .navbar-fixed-top .navbar-collapse {
     max-height: 100vh;
   }
-  .navbar-custom a {
+  .navbar-custom .menu-item a {
     color: gray;
     font-size: 24px;
     text-align: center;
