@@ -124,8 +124,6 @@ function lifelabs_setup() {
 
     register_post_type( 'tirinha', $args);  
 
-    show_admin_bar(false);
-
 }
 endif;
 add_action( 'after_setup_theme', 'lifelabs_setup' );
@@ -217,6 +215,7 @@ add_action( 'widgets_init', 'lifelabs_widgets_init' );
  * Enqueue scripts and styles.
  */
 function lifelabs_scripts() {
+	wp_enqueue_style( 'lifelabs-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'lifelabs-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -225,16 +224,6 @@ function lifelabs_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css' );
-    wp_enqueue_style( 'lifelabs-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/css/font-awesome.min.css' );
-
-    /*wp_enqueue_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/jquery.js', '', '', false);*/
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/js/bootstrap.min.js', array('jquery'), '', false );
-    wp_enqueue_script( 'jquery-easing', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js', array('jquery'), '', false );
-    wp_enqueue_script( 'tema', get_template_directory_uri() . '/js/lifelabs.js', array('jquery'), '', false );
-
 }
 add_action( 'wp_enqueue_scripts', 'lifelabs_scripts' );
 
@@ -294,3 +283,4 @@ function lifelabs_send_mail_before_submit(){
     echo 'erro!';
     die();
 }
+
