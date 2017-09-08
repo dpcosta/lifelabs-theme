@@ -1,64 +1,27 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package lifelabs
- */
+<?php /* Template Name: Newsletter */ ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+    <head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-get_header(); ?>
+    <meta name="description" content="Site Life Labs">
+    <meta name="author" content="Life Labs">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <title><?php bloginfo('name');?> - <?php bloginfo('description');?></title>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'lifelabs' ); ?></h1>
-				</header><!-- .page-header -->
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo( get_template_directory_uri() ); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'lifelabs' ); ?></p>
-
-					<?php
-						get_search_form();
-
-						the_widget( 'WP_Widget_Recent_Posts' );
-
-						// Only show the widget if site has multiple categories.
-						if ( lifelabs_categorized_blog() ) :
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'lifelabs' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-						endif;
-
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'lifelabs' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_footer();
+    <!-- Theme CSS -->
+    <link href="<?php echo( get_template_directory_uri() ); ?>/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container newsletter">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <img src="<?php echo( get_template_directory_uri() ); ?>/img/404.png" class="img-responsive">
+        </a>
+    </div>
+</body>
+</html>
